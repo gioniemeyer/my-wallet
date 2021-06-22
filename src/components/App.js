@@ -1,11 +1,11 @@
-import {BrowseRouter, Switch, Route} from "react-router-dom";
-import SignInPage from "./signIn/SignInPage";
+import {BrowserRouter, Switch, Route} from "react-router-dom";
+import SignInPage from "./login/SignInPage";
 import HomePage from "./homePage/HomePage";
-import SubscribePage from "./subscribe/SubscribePage";
+import SubscribePage from "./login/SubscribePage";
 
 export default function App() {
     return (
-        <BrowseRouter>
+        <BrowserRouter>
             <Switch>
                 <Route path='/subscribe' exact>
                     <SubscribePage />                    
@@ -17,6 +17,6 @@ export default function App() {
                     <HomePage />
                 </Route>
             </Switch>
-        </BrowseRouter>
+        </BrowserRouter>
     )
 }
