@@ -1,10 +1,10 @@
 import axios from 'axios'
 import { useState } from 'react';
 import {Container, Header, Register, Buttons, Button} from './Style';
+import { AiOutlinePlusCircle } from "react-icons/ai";
+import { AiOutlineMinusCircle } from "react-icons/ai";
 
 import logout from "../.././images/logout.png"
-import expense from "../.././images/expense.png"
-import profit from "../.././images/profit.png"
 
 export default function HomePage() {
     
@@ -21,11 +21,11 @@ export default function HomePage() {
             <Buttons>
                 <Button>
                     <p>Nova entrada</p>
-                    <img src={profit}></img>
+                    <AiOutlinePlusCircle/>
                 </Button>
                 <Button>
                     <p>Nova saída</p>
-                    <img src={expense}></img>
+                    <AiOutlineMinusCircle/>
                 </Button>
             </Buttons>
         </Container>
