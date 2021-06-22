@@ -3,8 +3,7 @@ import { useState } from 'react';
 import {Container, Header, Register, Buttons, Button} from './Style';
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import { AiOutlineMinusCircle } from "react-icons/ai";
-
-import logout from "../.././images/logout.png"
+import { RiLogoutBoxRLine } from "react-icons/ri";
 
 export default function HomePage() {
     
@@ -13,7 +12,7 @@ export default function HomePage() {
         <Container>
             <Header>
                 <h1>Olá, Fulano</h1>
-                <img src={logout}></img>
+                <RiLogoutBoxRLine/>
             </Header>
             <Register>
                 <p>Não há registros de entrada ou saída</p>

@@ -28,7 +28,7 @@ const Header = styled.div`
 const Register = styled.div`
     width: 90vw;
     background-color: #fff;
-    height: 446px;
+    height: 67vh;
     border-radius: 5px;
 `
 
