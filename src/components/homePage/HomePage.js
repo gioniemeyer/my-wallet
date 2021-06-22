@@ -1,5 +1,5 @@
-import axios from 'axios'
-import { useState } from 'react';
+// import axios from 'axios'
+// import { useState } from 'react';
 import {Container, Header, Register, Buttons, Button} from './Style';
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import { AiOutlineMinusCircle } from "react-icons/ai";

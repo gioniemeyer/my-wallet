@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { useHistory } from "react-router";
+import { useHistory } from "react-router-dom";
 import {Container, Form, Button} from "./Style"
 import axios from 'axios';
 
 export default function SubscribePage() {
-    const history = useHistory();
+    let history = useHistory();
 
     const [load, setLoad] = useState(false);
     const [name, setName] = useState('');
@@ -12,11 +12,13 @@ export default function SubscribePage() {
     const [password, setPassword] = useState('');
     const [confirmedPassword, setConfirmedPassword] = useState('');
 
-    function createUser() {
+    function createUser(e) {
+        e.preventDefault();
+
         setLoad(true);
         if(password !== confirmedPassword) return alert("Senhas não estão iguais");
         
-        const body = {name, email, password, confirmedPassword};
+        const body = {name, email, password};
 
         const req = axios.post('http://localhost:4000/subscribe', body);
 
@@ -26,6 +28,7 @@ export default function SubscribePage() {
         });
 
         req.catch(err => {
+            setLoad(false);
             alert(err);
         })
     }
@@ -33,7 +36,7 @@ export default function SubscribePage() {
     return(
         <Container>
             <h1>MyWallet</h1>
-            <Form onSubmit={createUser}>
+            <Form onSubmit={e => createUser(e)}>
                 <input
                     disabled={load}
                     type='text'

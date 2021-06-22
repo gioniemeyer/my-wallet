@@ -32,9 +32,9 @@ const Register = styled.div`
     border-radius: 5px;
 `
 
-const Menu = styled.div`
-    width: 90vw;
-`
+// const Menu = styled.div`
+//     width: 90vw;
+// `
 
 const Buttons = styled.div`
     width: 90vw;
@@ -55,3 +55,6 @@ const Button = styled.button`
 `
 
 export {Container, Header, Register, Buttons, Button};
+
+
+// CREATE TABLE users (id SERIAL, name TEXT, email TEXT, password TEXT);
