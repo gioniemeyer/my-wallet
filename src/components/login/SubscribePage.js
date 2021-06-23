@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
 import {Container, Form, Button} from "./Style"
 import axios from 'axios';
@@ -14,7 +14,6 @@ export default function SubscribePage() {
 
     function createUser(e) {
         e.preventDefault();
-
         setLoad(true);
         if(password !== confirmedPassword) return alert("Senhas não estão iguais");
         
