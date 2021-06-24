@@ -37,6 +37,9 @@ const Register = styled.div`
     border-radius: 5px;
     position: relative;
 `
+const Transactions = styled.ul`
+    color: #000;
+`
 
 const Warn = styled.div`
     color: #868686;
@@ -80,7 +83,7 @@ const Button = styled.button`
     }
 `
 
-export {Container, Header, Register, Buttons, Button, Warn};
+export {Container, Header, Register, Buttons, Button, Warn, Transactions};
 
 
 // CREATE TABLE users (id SERIAL, name TEXT, email TEXT, password TEXT);

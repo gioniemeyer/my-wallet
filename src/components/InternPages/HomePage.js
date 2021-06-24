@@ -1,19 +1,21 @@
 import axios from 'axios'
 import { useState, useEffect, useContext } from 'react';
-import {Container, Header, Register, Buttons, Button, Warn} from './HomePageStyle';
+import {Container, Header, Register, Buttons, Button, Warn, Transactions} from './HomePageStyle';
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import { AiOutlineMinusCircle } from "react-icons/ai";
 import { RiLogoutBoxRLine } from "react-icons/ri";
 import UserContext from "../../contexts/UserContext";
 import { useHistory } from 'react-router';
+import Transaction from './Transaction';
+import Total from './Total';
 
 export default function HomePage() {
     let history = useHistory();
-
     const { token } = useContext(UserContext);
-    const [user, setUser] = useState('');
     const localToken = JSON.parse(localStorage.getItem("token"));
 
+    const [user, setUser] = useState('');
+    const [transactions, setTransactions] = useState([]);
     
     useEffect(() => {
         const config = {
@@ -34,8 +36,10 @@ export default function HomePage() {
             "http://localhost:4000/register",
             config);
 
-          req.then((res) => console.log(res.data));
+          req.then((res) => setTransactions(res.data));
     }, []);
+
+    console.log(transactions)
 
     return(
         <Container>
@@ -44,7 +48,16 @@ export default function HomePage() {
                 <RiLogoutBoxRLine/>
             </Header>
             <Register>
-                <Warn>Não há registros de entrada ou saída</Warn>
+                {
+                    transactions.length === 0 ?
+                        <Warn>Não há registros de entrada ou saída</Warn> :
+                        <>
+                        <Transactions>
+                            {transactions.map(t => <Transaction t={t}/>)}
+                        </Transactions>
+                        <Total transactions={transactions}/>
+                        </>
+                }
             </Register>
             <Buttons>
                 <Button onClick={() => history.push('/new-entry')}>
