@@ -1,23 +1,43 @@
 import axios from 'axios'
-import { useState, useEffect, useContext } from 'react';
+import { useState, useContext} from 'react';
 import {Container, Header, Form, Button} from './TransactionsStyle';
 import UserContext from "../../contexts/UserContext";
+import { useHistory } from 'react-router';
 
 export default function ProfitPage() {
+    let history = useHistory();
     const { token } = useContext(UserContext);
-    const [user, setUser] = useState('');
     const localToken = JSON.parse(localStorage.getItem("token"));
     
     const [value, setValue] = useState('');
     const [description, setDescription] = useState('');
     const [disabled, setDisabled] = useState(false);
 
+    function inputGain(e) {
+        e.preventDefault();
+        setDisabled(true);
+        const body = {value, description};
+        const config = {
+            headers: {Authorization: `Bearer ${token || localToken}`}
+        }
+        const req = axios.post('http://localhost:4000/new-entry', body, config);
+
+        req.then(() => {
+            setDisabled(false);
+            history.push('/');
+        });
+
+        req.catch(()=> {
+            setDisabled(false);
+        })
+    }
+
     return(
         <Container>
             <Header>
                 <h1>Nova entrada</h1>
             </Header>
-            <Form>
+            <Form onSubmit={(e) => inputGain(e)}>
                 <input 
                     placeholder="Valor"
                     value={value}
@@ -34,7 +54,7 @@ export default function ProfitPage() {
                     disabled={disabled}
                     type="text"
                 />
-                <Button>
+                <Button type="submit">
                     <p><strong>Salvar entrada</strong></p>
                 </Button>
             </Form>

@@ -1,28 +1,37 @@
 import axios from 'axios'
-import { useState, useEffect, useContext } from 'react';
+import { useState, useContext } from 'react';
 import {Container, Header, Form, Button} from './TransactionsStyle';
 import UserContext from "../../contexts/UserContext";
+import {useHistory} from 'react-router'
 
 export default function ExpensePage() {
+    let history = useHistory();
     const { token } = useContext(UserContext);
-    const [user, setUser] = useState('');
     const localToken = JSON.parse(localStorage.getItem("token"));
     
     const [value, setValue] = useState('');
     const [description, setDescription] = useState('');
     const [disabled, setDisabled] = useState(false);
     
-    useEffect(() => {
-         
+    function inputExpense(e) {
+        e.preventDefault();
+        setDisabled(true);
+        const body = {value, description};
         const config = {
-            headers: { Authorization: `Bearer ${token || localToken}`}
-          };
-          const req = axios.get(
-            "http://localhost:4000/home",
-            config);
+            headers: {Authorization: `Bearer ${token || localToken}`}
+        }
+        const req = axios.post('http://localhost:4000/new-expense', body, config);
 
-          req.then((res) => setUser(res.data));
-    }, []);
+        req.then(() => {
+            setDisabled(false);
+            history.push('/');
+        });
+
+        req.catch(()=> {
+            setDisabled(false);
+        })
+    }
+
 
     return(
         <Container>
@@ -30,7 +39,7 @@ export default function ExpensePage() {
                 <h1>Nova saída</h1>
             </Header>
 
-            <Form>
+            <Form onSubmit={e => inputExpense(e)}>
                 <input 
                     placeholder="Valor"
                     value={value}
@@ -47,7 +56,7 @@ export default function ExpensePage() {
                     disabled={disabled}
                     type="text"
                 />
-                <Button>
+                <Button type="submit">
                     <p><strong>Salvar entrada</strong></p>
                 </Button>
             </Form>

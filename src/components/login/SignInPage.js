@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
 import {Container, Form, Button} from "./Style"
 import axios from 'axios';
@@ -21,7 +21,6 @@ export default function SignInPage() {
 
         promise.then(res => {
             setLoad(false);
-            // setToken(res.data);
             localStorage.setItem("token", JSON.stringify(res.data));
             setToken(JSON.parse(localStorage.getItem("token")))
             console.log(token)

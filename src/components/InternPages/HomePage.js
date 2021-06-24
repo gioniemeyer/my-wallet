@@ -13,10 +13,9 @@ export default function HomePage() {
     const { token } = useContext(UserContext);
     const [user, setUser] = useState('');
     const localToken = JSON.parse(localStorage.getItem("token"));
-    
+
     
     useEffect(() => {
-         
         const config = {
             headers: { Authorization: `Bearer ${token || localToken}`}
           };
@@ -25,6 +24,17 @@ export default function HomePage() {
             config);
 
           req.then((res) => setUser(res.data));
+    }, []);
+
+    useEffect(() => {
+        const config = {
+            headers: { Authorization: `Bearer ${token || localToken}`}
+          };
+          const req = axios.get(
+            "http://localhost:4000/register",
+            config);
+
+          req.then((res) => console.log(res.data));
     }, []);
 
     return(
