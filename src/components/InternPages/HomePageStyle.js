@@ -39,6 +39,8 @@ const Register = styled.div`
 `
 const Transactions = styled.ul`
     color: #000;
+    height: 90%;
+    overflow: scroll;
 `
 
 const Warn = styled.div`
