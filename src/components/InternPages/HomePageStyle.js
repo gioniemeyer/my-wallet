@@ -16,13 +16,14 @@ const Container = styled.div`
 `
 
 const Header = styled.div`
-    margin-top: 15px;
+    margin-top: 25px;
     width: 90vw;
     display: flex;
     justify-content: space-between;
 
     h1{
         font-size: 26px;
+        font-weight: bold;
     }
 
     svg {
@@ -46,10 +47,6 @@ const Warn = styled.div`
     text-align: center;
 `
 
-// const Menu = styled.div`
-//     width: 90vw;
-// `
-
 const Buttons = styled.div`
     width: 90vw;
     height: 114px;
@@ -66,6 +63,21 @@ const Button = styled.button`
     background-color: #A328D6;
     color: #fff;
     font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 8px 8px;
+
+    p {
+        text-align: start;
+        width: 75px;
+        font-size: 17px;
+    }
+
+    svg {
+        font-size: 22px;
+    }
 `
 
 export {Container, Header, Register, Buttons, Button, Warn};

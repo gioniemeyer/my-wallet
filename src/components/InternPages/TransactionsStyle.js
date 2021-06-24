@@ -5,19 +5,29 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
     font-family: 'Raleway', sans-serif;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     height: 100vh;
     color: #fff;
 
-    h1 {
-        font-family: 'Saira Stencil One', cursive;
-        font-size: 32px;
-        margin-bottom: 30px;
-    }
-
     p {
         font-size: 15px;
+    }
+`
+
+const Header = styled.div`
+    margin-top: 25px;
+    width: 90vw;
+    display: flex;
+    justify-content: space-between;
+
+    h1{
+        font-size: 26px;
+        font-weight: bold;
+    }
+
+    svg {
+        font-size: 25px;
     }
 `
 
@@ -25,6 +35,7 @@ const Form = styled.form`
     width: 90vw;
     display: flex;
     flex-direction: column;
+    margin-top: 50px;
 
     input {
         margin-bottom: 13px;
@@ -47,9 +58,13 @@ const Button = styled.button`
     background-color: #A328D6;
     margin-bottom: 30px;
     color: #fff;
+
     p {
         font-size: 20px;
     }
 `
 
-export {Container, Form, Button};
+export {Container, Header, Form, Button};
+
+
+// CREATE TABLE users (id SERIAL, name TEXT, email TEXT, password TEXT);

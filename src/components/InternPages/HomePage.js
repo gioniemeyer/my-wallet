@@ -1,12 +1,15 @@
 import axios from 'axios'
 import { useState, useEffect, useContext } from 'react';
-import {Container, Header, Register, Buttons, Button, Warn} from './Style';
+import {Container, Header, Register, Buttons, Button, Warn} from './HomePageStyle';
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import { AiOutlineMinusCircle } from "react-icons/ai";
 import { RiLogoutBoxRLine } from "react-icons/ri";
 import UserContext from "../../contexts/UserContext";
+import { useHistory } from 'react-router';
 
 export default function HomePage() {
+    let history = useHistory();
+
     const { token } = useContext(UserContext);
     const [user, setUser] = useState('');
     const localToken = JSON.parse(localStorage.getItem("token"));
@@ -34,13 +37,13 @@ export default function HomePage() {
                 <Warn>Não há registros de entrada ou saída</Warn>
             </Register>
             <Buttons>
-                <Button>
-                    <p>Nova entrada</p>
+                <Button onClick={() => history.push('/new-entry')}>
                     <AiOutlinePlusCircle/>
+                    <p><strong>Nova entrada</strong></p>
                 </Button>
-                <Button>
-                    <p>Nova saída</p>
+                <Button onClick={() => history.push('/new-expense')}>
                     <AiOutlineMinusCircle/>
+                    <p><strong>Nova saída</strong></p>
                 </Button>
             </Buttons>
         </Container>
