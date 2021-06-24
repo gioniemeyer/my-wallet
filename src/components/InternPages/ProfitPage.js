@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { useState, useContext} from 'react';
+import { useState, useContext, useEffect} from 'react';
 import {Container, Header, Form, Button} from './TransactionsStyle';
 import UserContext from "../../contexts/UserContext";
 import { useHistory } from 'react-router';
@@ -12,6 +12,12 @@ export default function ProfitPage() {
     const [value, setValue] = useState('');
     const [description, setDescription] = useState('');
     const [disabled, setDisabled] = useState(false);
+
+    useEffect(() => {
+        if(!token && !localToken) {
+            history.push('/sign-in');
+        }
+    },[])
 
     function inputGain(e) {
         e.preventDefault();

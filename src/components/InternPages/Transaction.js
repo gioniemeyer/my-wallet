@@ -37,7 +37,6 @@ const Infos = styled.div`
     display: flex;
     justify-content: space-between;
     width: 78%;
-
 `
 
 const Description = styled.span`

@@ -6,7 +6,7 @@ import UserContext from "../../contexts/UserContext"
 export default function SignInPage() {
 
     let history = useHistory();
-    const { token, setToken } = useContext(UserContext);
+    const { setToken } = useContext(UserContext);
     const [load, setLoad] = useState(false);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -23,7 +23,6 @@ export default function SignInPage() {
             setLoad(false);
             localStorage.setItem("token", JSON.stringify(res.data));
             setToken(JSON.parse(localStorage.getItem("token")))
-            console.log(token)
             history.push("/");
         });
 
@@ -51,7 +50,7 @@ export default function SignInPage() {
                     onChange={e => setPassword(e.target.value)}
                 />
                 <Button disabled={load} type="submit">
-                    <strong>Entrar!</strong>
+                    <p>Entrar!</p>
                 </Button>
             </Form>
             <p onClick={() => history.push('/subscribe')}><strong>Primeira vez? Cadastre-se!</strong></p>

@@ -64,7 +64,9 @@ export default function SubscribePage() {
                     placeholder="Confirme a senha"
                     onChange={e => setConfirmedPassword(e.target.value)}
                 />
-                <Button disabled={load} type="submit"><strong>Cadastrar</strong></Button>
+                <Button disabled={load} type="submit">
+                    <p>Cadastrar</p>
+                </Button>
             </Form>
             <p onClick={() => history.push('/sign-in')}><strong>Já tem uma conta? Entre agora!</strong></p>
         </Container>

@@ -49,6 +49,7 @@ const Button = styled.button`
     color: #fff;
     p {
         font-size: 20px;
+        font-weight: bold;
     }
 `
 

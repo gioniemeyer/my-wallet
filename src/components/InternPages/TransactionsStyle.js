@@ -65,6 +65,3 @@ const Button = styled.button`
 `
 
 export {Container, Header, Form, Button};
-
-
-// CREATE TABLE users (id SERIAL, name TEXT, email TEXT, password TEXT);

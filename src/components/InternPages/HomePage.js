@@ -21,31 +21,41 @@ export default function HomePage() {
         const config = {
             headers: { Authorization: `Bearer ${token || localToken}`}
           };
-          const req = axios.get(
+          const reqUser = axios.get(
             "http://localhost:4000/home",
             config);
 
-          req.then((res) => setUser(res.data));
-    }, []);
+          reqUser.then((res) => setUser(res.data));
+          reqUser.catch(() => history.push("/sign-in"));
 
-    useEffect(() => {
-        const config = {
-            headers: { Authorization: `Bearer ${token || localToken}`}
-          };
-          const req = axios.get(
+          const secondReq = axios.get(
             "http://localhost:4000/register",
             config);
 
-          req.then((res) => setTransactions(res.data));
+            secondReq.then((res) => setTransactions(res.data));
     }, []);
 
-    console.log(transactions)
+    function signOut() {
+        const config = {
+            headers: { Authorization: `Bearer ${token || localToken}`}
+          };
+        
+          const req = axios.get(
+            "http://localhost:4000/sign-out",
+            config);
+
+        req.then(() => {
+            localStorage.removeItem('token');
+            history.push('/sign-in');
+        });
+
+    }
 
     return(
         <Container>
             <Header>
                 <h1>Olá, {user.name}</h1>
-                <RiLogoutBoxRLine/>
+                <RiLogoutBoxRLine onClick={signOut}/>
             </Header>
             <Register>
                 {
