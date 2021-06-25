@@ -33,8 +33,13 @@ export default function ProfitPage() {
             history.push('/');
         });
 
-        req.catch(()=> {
-            alert("Favor preencher todos os campos corretamente!")
+        req.catch((err)=> {
+            const statusCode = err.response.status;
+            if(statusCode === 400) {
+                alert("Favor preencher todos os campos corretamente!")
+            } else {
+                alert("Houve um problema, favor tentar novamente mais tarde.");
+            }
             setDisabled(false);
         })
     }
