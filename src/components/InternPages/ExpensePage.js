@@ -35,6 +35,7 @@ export default function ExpensePage() {
         });
 
         req.catch(()=> {
+            alert("Favor preencher todos os campos corretamente!")
             setDisabled(false);
         })
     }

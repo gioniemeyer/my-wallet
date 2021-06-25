@@ -11,7 +11,6 @@ export default function SignInPage() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    
     function login(e) {
         e.preventDefault();
 
@@ -27,7 +26,13 @@ export default function SignInPage() {
         });
 
         promise.catch(err => {
-            alert(err);
+            const statusCode = err.response.status;
+            if(statusCode === 404) {
+                alert("E-mail não encontrado");
+            } else {
+                alert("Favor preencher os campos corretamente")
+            }
+            setLoad(false);        
         })
     }
 

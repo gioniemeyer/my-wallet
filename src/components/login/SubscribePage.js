@@ -27,8 +27,13 @@ export default function SubscribePage() {
         });
 
         req.catch(err => {
+            const statusCode = err.response.status;
+            if(statusCode === 409) {
+                alert("E-mail já cadastrado");
+            } else {
+                alert("Favor preencher os campos corretamente")
+            }
             setLoad(false);
-            alert(err);
         })
     }
 
