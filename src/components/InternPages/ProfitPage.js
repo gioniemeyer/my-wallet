@@ -37,6 +37,7 @@ export default function ProfitPage() {
             const statusCode = err.response.status;
             if(statusCode === 400) {
                 alert("Favor preencher todos os campos corretamente!")
+                history.push('/');
             } else {
                 alert("Houve um problema, favor tentar novamente mais tarde.");
             }
