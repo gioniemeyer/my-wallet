@@ -1,4 +1,4 @@
-# My Wallet
+# My Wallet 💸
 
 An easy to use financial manager. Track your revenues and expenses to learn how you spend your money and know all the time how much you have.
 
@@ -29,7 +29,7 @@ The following tools and frameworks were used in the construction of the project:
 
 1. Clone this repository
 2. Clone the back-end repository at https://github.com/gioniemeyer/my-wallet-backend
-3. Follow instructions to run back-end at https://github.com/my-user/my-project-backend
+3. Follow instructions to run back-end at previously mentioned repository
 4. Install dependencies
 ```bash
 npm i
