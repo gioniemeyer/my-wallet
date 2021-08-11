@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const Container = styled.div`
     background-color: #8f53bf;
@@ -13,7 +13,7 @@ const Container = styled.div`
     p {
         font-size: 15px;
     }
-`
+`;
 
 const Header = styled.div`
     margin-top: 25px;
@@ -29,7 +29,7 @@ const Header = styled.div`
     svg {
         font-size: 25px;
     }
-`
+`;
 
 const Form = styled.form`
     width: 90vw;
@@ -49,7 +49,7 @@ const Form = styled.form`
         color: #000;
         padding-left: 15px;
     }
-` 
+`; 
 
 const Button = styled.button`
     height: 58px;
@@ -62,6 +62,6 @@ const Button = styled.button`
     p {
         font-size: 20px;
     }
-`
+`;
 
 export {Container, Header, Form, Button};

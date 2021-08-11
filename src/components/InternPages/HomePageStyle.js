@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const Container = styled.div`
     background-color: #8f53bf;
@@ -13,7 +13,7 @@ const Container = styled.div`
     p {
         font-size: 15px;
     }
-`
+`;
 
 const Header = styled.div`
     margin-top: 25px;
@@ -29,19 +29,19 @@ const Header = styled.div`
     svg {
         font-size: 25px;
     }
-`
+`;
 const Register = styled.div`
     width: 90vw;
     background-color: #fff;
     height: 67vh;
     border-radius: 5px;
     position: relative;
-`
+`;
 const Transactions = styled.ul`
     color: #000;
     height: 90%;
     overflow: scroll;
-`
+`;
 
 const Warn = styled.div`
     color: #868686;
@@ -50,7 +50,7 @@ const Warn = styled.div`
     top: 48%;
     left: calc(50% - 90px);
     text-align: center;
-`
+`;
 
 const Buttons = styled.div`
     width: 90vw;
@@ -58,7 +58,7 @@ const Buttons = styled.div`
     margin-bottom: 15px;
     display: flex;
     justify-content: space-between;
-`
+`;
 
 const Button = styled.button`
     height: 100%;
@@ -83,6 +83,6 @@ const Button = styled.button`
     svg {
         font-size: 22px;
     }
-`
+`;
 
 export {Container, Header, Register, Buttons, Button, Warn, Transactions};
