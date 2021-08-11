@@ -21,18 +21,15 @@ export default function HomePage() {
         const config = {
             headers: { Authorization: `Bearer ${token || localToken}`}
           };
-          const reqUser = axios.get(
+          const request = axios.get(
             "http://localhost:4000/home",
             config);
 
-          reqUser.then((res) => setUser(res.data));
-          reqUser.catch(() => history.push("/sign-in"));
-
-          const secondReq = axios.get(
-            "http://localhost:4000/register",
-            config);
-
-            secondReq.then((res) => setTransactions(res.data));
+          request.then((res) => {
+              setUser(res.data.user);
+              setTransactions(res.data.transactions);
+            });
+          request.catch(() => history.push("/sign-in"));
     }, []);
 
     function signOut() {
@@ -54,7 +51,7 @@ export default function HomePage() {
     return(
         <Container>
             <Header>
-                <h1>Olá, {user.name}</h1>
+                <h1>Olá, {user}</h1>
                 <RiLogoutBoxRLine onClick={signOut}/>
             </Header>
             <Register>
