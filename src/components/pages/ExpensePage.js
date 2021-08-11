@@ -1,11 +1,11 @@
 /* eslint-disable react/react-in-jsx-scope */
 import axios from "axios";
-import { useState, useContext, useEffect} from "react";
-import {Container, Header, Form, Button} from "./TransactionsStyle";
+import { useState, useContext, useEffect } from "react";
+import {Container, Header, Form, Button} from "../../styles/TransactionsStyle";
 import UserContext from "../../contexts/UserContext";
-import { useHistory } from "react-router";
+import {useHistory} from "react-router";
 
-export default function ProfitPage() {
+export default function ExpensePage() {
 	let history = useHistory();
 	const { token } = useContext(UserContext);
 	const localToken = JSON.parse(localStorage.getItem("token"));
@@ -20,7 +20,8 @@ export default function ProfitPage() {
 		}
 	},[]);
 
-	function inputGain(e) {
+    
+	function inputExpense(e) {
 		e.preventDefault();
 		setDisabled(true);
 		const body = {value, description};
@@ -28,31 +29,27 @@ export default function ProfitPage() {
 			headers: {Authorization: `Bearer ${token || localToken}`}
 		};
 		// eslint-disable-next-line no-undef
-		const req = axios.post(`${process.env.REACT_APP_API_BASE_URL}/new-entry`, body, config);
+		const req = axios.post(`${process.env.REACT_APP_API_BASE_URL}/new-expense`, body, config);
 
 		req.then(() => {
 			setDisabled(false);
 			history.push("/");
 		});
 
-		req.catch((err)=> {
-			const statusCode = err.response.status;
-			if(statusCode === 400) {
-				alert("Favor preencher todos os campos corretamente!");
-				history.push("/");
-			} else {
-				alert("Houve um problema, favor tentar novamente mais tarde.");
-			}
+		req.catch(()=> {
+			alert("Favor preencher todos os campos corretamente!");
 			setDisabled(false);
 		});
 	}
 
+
 	return(
 		<Container>
 			<Header>
-				<h1>Nova entrada</h1>
+				<h1>Nova saída</h1>
 			</Header>
-			<Form onSubmit={(e) => inputGain(e)}>
+
+			<Form onSubmit={e => inputExpense(e)}>
 				<input 
 					placeholder="Valor"
 					value={value}
@@ -73,6 +70,7 @@ export default function ProfitPage() {
 					<p><strong>Salvar entrada</strong></p>
 				</Button>
 			</Form>
+
 		</Container>
 	);
 }

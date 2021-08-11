@@ -1,10 +1,10 @@
 /* eslint-disable react/react-in-jsx-scope */
+import { Form, Button} from "../../styles/componentsStyle";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
-import {Container, Form, Button} from "./Style";
 import axios from "axios";
 
-export default function SubscribePage() {
+export default function SubscribeForm() {
 	let history = useHistory();
 
 	const [load, setLoad] = useState(false);
@@ -38,45 +38,39 @@ export default function SubscribePage() {
 			setLoad(false);
 		});
 	}
-
-	return(
-		<Container>
-			<h1>MyWallet</h1>
-			<Form onSubmit={e => createUser(e)}>
-				<input
-					disabled={load}
-					type='text'
-					value={name}
-					placeholder="Nome"
-					onChange={e => setName(e.target.value)}
-				/>
-				<input
-					disabled={load}
-					type='email'
-					value={email}
-					placeholder="E-mail"
-					onChange={e => setEmail(e.target.value)}
-				/>
-				<input
-					disabled={load} 
-					type='password'
-					value={password}
-					placeholder="Senha"
-					onChange={e => setPassword(e.target.value)}
-				/>
-				<input
-					disabled={load}
-					type='password'
-					value={confirmedPassword}
-					placeholder="Confirme a senha"
-					onChange={e => setConfirmedPassword(e.target.value)}
-				/>
-				<Button disabled={load} type="submit">
-					<p>Cadastrar</p>
-				</Button>
-			</Form>
-			<p onClick={() => history.push("/sign-in")}><strong>Já tem uma conta? Entre agora!</strong></p>
-		</Container>
+	return (
+		<Form onSubmit={e => createUser(e)}>
+			<input
+				disabled={load}
+				type='text'
+				value={name}
+				placeholder="Nome"
+				onChange={e => setName(e.target.value)}
+			/>
+			<input
+				disabled={load}
+				type='email'
+				value={email}
+				placeholder="E-mail"
+				onChange={e => setEmail(e.target.value)}
+			/>
+			<input
+				disabled={load} 
+				type='password'
+				value={password}
+				placeholder="Senha"
+				onChange={e => setPassword(e.target.value)}
+			/>
+			<input
+				disabled={load}
+				type='password'
+				value={confirmedPassword}
+				placeholder="Confirme a senha"
+				onChange={e => setConfirmedPassword(e.target.value)}
+			/>
+			<Button disabled={load} type="submit">
+				<p>Cadastrar</p>
+			</Button>
+		</Form>
 	);
 }
-

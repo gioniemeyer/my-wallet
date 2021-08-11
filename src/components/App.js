@@ -3,11 +3,11 @@ import {BrowserRouter, Switch, Route} from "react-router-dom";
 import { useState } from "react";
 import UserContext from ".././contexts/UserContext";
 
-import SignInPage from "./login/SignInPage";
-import HomePage from "./InternPages/HomePage";
-import SubscribePage from "./login/SubscribePage";
-import ProfitPage from "./InternPages/ProfitPage";
-import ExpensePage from "./InternPages/ExpensePage";
+import SignInPage from "../components/pages/SignInPage";
+import HomePage from "../components/pages/HomePage";
+import SubscribePage from "../components/pages/SubscribePage";
+import ProfitPage from "../components/pages/ProfitPage";
+import ExpensePage from "../components/pages/ExpensePage";
 
 export default function App() {
 

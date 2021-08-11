@@ -2,14 +2,16 @@
 /* eslint-disable react/react-in-jsx-scope */
 import axios from "axios";
 import { useState, useEffect, useContext } from "react";
-import {Container, Header, Register, Buttons, Button, Warn, Transactions} from "./HomePageStyle";
+import {
+	Container, Header, Register, Buttons, Button, Warn, Transactions
+} from "../../styles/HomePageStyle";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import { AiOutlineMinusCircle } from "react-icons/ai";
 import { RiLogoutBoxRLine } from "react-icons/ri";
 import UserContext from "../../contexts/UserContext";
 import { useHistory } from "react-router";
-import Transaction from "./Transaction";
-import Total from "./Total";
+import Transaction from "../InternPages/Transaction";
+import Total from "../InternPages/Total";
 
 export default function HomePage() {
 	let history = useHistory();

@@ -1,11 +1,12 @@
 /* eslint-disable react/react-in-jsx-scope */
 import { useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
-import {Container, Form, Button} from "./Style";
+import { Form, Button} from "../../styles/componentsStyle";
 import axios from "axios";
 import UserContext from "../../contexts/UserContext";
-export default function SignInPage() {
 
+
+export default function SignInForm() {
 	let history = useHistory();
 	const { setToken } = useContext(UserContext);
 	const [load, setLoad] = useState(false);
@@ -39,28 +40,25 @@ export default function SignInPage() {
 	}
 
 	return(
-		<Container>
-			<h1>MyWallet</h1>
-			<Form onSubmit={(e) => login(e)}>
-				<input
-					disabled={load}
-					type='email'
-					value={email}
-					placeholder="E-mail"
-					onChange={e => setEmail(e.target.value)}
-				/>
-				<input
-					disabled={load} 
-					type='password'
-					value={password}
-					placeholder="Senha"
-					onChange={e => setPassword(e.target.value)}
-				/>
-				<Button disabled={load} type="submit">
-					<p>Entrar!</p>
-				</Button>
-			</Form>
-			<p onClick={() => history.push("/subscribe")}><strong>Primeira vez? Cadastre-se!</strong></p>
-		</Container>
+		<Form onSubmit={(e) => login(e)}>
+			<input
+				disabled={load}
+				type='email'
+				value={email}
+				placeholder="E-mail"
+				onChange={e => setEmail(e.target.value)}
+			/>
+			<input
+				disabled={load} 
+				type='password'
+				value={password}
+				placeholder="Senha"
+				onChange={e => setPassword(e.target.value)}
+			/>
+			<Button disabled={load} type="submit">
+				<p>Entrar!</p>
+			</Button>
+		</Form>
+
 	);
 }
